@@ -1,0 +1,17 @@
+{
+    "name": "ronaldo/mypdv",
+    "description": "projeto desenvolvido no curso de desenvolvimento web full stack",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ronaldo leite"
+        }
+    ],
+    "require": {}
+}
