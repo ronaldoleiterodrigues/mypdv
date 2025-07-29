@@ -1,43 +1,47 @@
-<?php require_once __DIR__ . "/../shared/header.php"; ?>
+<?php require_once "../src/Views/shared/header.php";
+?>
 <div class="body">
-    <!-- Menu lateral -->
     <aside id="sidebar">
 
         <div class="toggle" onclick="toggleSidebar()">
             <i id="toggleIcon" class="fas fa-chevron-left"></i>
         </div>
 
-        <h2 id="panelTitle">Painel Controle</h2>
-        <nav>
+
+        <nav class="">
+        <div class="box-12">
+            <h3 class="fonte12 espaco-letra fnc-laranja mg-b-3">Ola, <?= $_SESSION['nome'] ?>. Seja bem vindo! </h3>
+        </div>    
+        
             <a href="/painel-controle">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-home fonte14"></i>
                 <span>Início</span>
             </a>
-            <a href="#">
-                <i class="fas fa-receipt"></i>
-                <span>Vendas</span>
+            <a href="/listar-categorias">
+                <i class="fas fa-receipt fonte14"></i>
+                <span>Categorias</span>
             </a>
-            <a href="#">
-                <i class="fas fa-box"></i>
+            <a href="/listar-produtos">
+                <i class="fas fa-box fonte14"></i>
                 <span>Produtos</span>
             </a>
-            <a href="#">
-                <i class="fas fa-users"></i>
+            <a href="/listar-clientes">
+                <i class="fas fa-users fonte14"></i>
                 <span>Clientes</span>
             </a>
 
-            <a href="/listar-usuario">
-                <i class="fas fa-user"></i>
+            <a href="/listar-usuarios">
+                <i class="fas fa-user fonte14"></i>
                 <span>Usuarios</span>
             </a>
 
-            <a href="#">
-                <i class="fas fa-cog"></i>
+            <a href="/listar-configuracoes">
+                <i class="fas fa-cog fonte14"></i>
                 <span>Configurações</span>
             </a>
 
-            <a href="#">
-                <i class="fa-solid fa-right-from-bracket"></i>
+            <a href="/logout">
+                <i class="fa-solid fa-right-from-bracket fonte14"></i>
                 <span>Logout</span>
             </a>
 
@@ -46,11 +50,14 @@
 
     <!-- Conteúdo principal -->
     <main>
-       <?= $content ?? ''; ?>
+        <h2 id="panelTitle" class=" fonte32 mg-b-4">Painel Controle</h2>
 
-    </main>   
+        <?= $content ?? ''; ?>
+
+    </main>
     <script>
-           let table = new DataTable('#tabela');
+        let table = new DataTable('#tabela');
+
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             const icon = document.getElementById("toggleIcon");
@@ -65,7 +72,5 @@
                 icon.classList.add("fa-chevron-left");
             }
         }
-    </script> 
+    </script>
 </div>
-
-

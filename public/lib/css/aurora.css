@@ -918,6 +918,10 @@ select {
     color: #FFF;
     transition: .15s ease-in-out;
 }
+.fnc-preto-azulado {
+    color: var(--cor-preto-azulado);
+    transition: .15s ease-in-out;
+}
 
 .fnc-primario {
     color: var(--cor-primaria);

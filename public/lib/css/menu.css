@@ -4,14 +4,9 @@
     display: flex;
     height: 100vh;
     background-color: #f3f4f6;
-  }	  
-  .cabec{
-  width:100%;
-  height:80px;
-  background-color: #1f2937;
   }
   aside {
-    background-color: #1f2937;
+    background-color: rgb(73, 75, 245);
     color: #fff;
     width: 260px;
     padding: 20px;
@@ -40,19 +35,33 @@
     align-items: center;
     gap: 12px;
     padding: 12px;
+    font-size: 12px;
     border-radius: 8px;
-    color: #fff;
+    color: rgb(194, 212, 252);
     text-decoration: none;
     transition: background 0.2s;
   }
   aside nav a:hover {
-    background-color: #374151;
+    background-color: #2f276a;
   }
   aside nav span {
     transition: opacity 0.3s;
   }
   aside.collapsed nav span {
     opacity: 0;
+  }
+  aside .bola{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background:#fff;
+    padding: 5px;
+    overflow: hidden;
+    margin: auto;
+    transition: all .35s;
+  }
+  aside.collapsed h3{
+    display:none;
   }
   main {
     flex: 1;

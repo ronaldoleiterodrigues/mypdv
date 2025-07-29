@@ -32,31 +32,31 @@ class UsuarioController extends BaseController
     {
         // Separação da responsabilidade de buscar os dados e exibir a view
         $usuarios = (new UsuarioDao())->ListarTodos();
-        $this->render("usuario/listar",["usuarios" => $usuarios]);
+        $this->render("usuario/listar", ["usuarios" => $usuarios]);
     }
 
     // Função principal de gerenciamento de usuários (inserção, alteração e listagem)
-    public function index($id = null)    { 
+    public function index($id = null)
+    {
         $method = $_SERVER["REQUEST_METHOD"];
 
         $perfis = $this->perfilDao->listarTodos();
 
-        if ($method === "GET" && $id) {           
+        if ($method === "GET" && $id) {
             $usuario = $this->usuarioDao->obterPorId($id);
-            $this->render("usuario/index",["usuario" => $usuario, "id"=> $id, "perfis"=>$perfis]);
+            $this->render("usuario/index", ["usuario" => $usuario, "id" => $id, "perfis" => $perfis]);
         }
 
         if ($method === "POST") {
             if ($_POST['id']) {
                 $this->alterar($_POST, $_FILES);
-               
             } else {
-                $this->inserir($_POST, $_FILES); 
+                $this->inserir($_POST, $_FILES);
             }
         }
 
         $usuarios = $this->usuarioDao->ListarTodos();
-        $this->render("usuario/index", ["perfis"=> $perfis]);
+        $this->render("usuario/index", ["perfis" => $perfis]);
     }
 
     // Função responsável por inserir um usuário
@@ -69,7 +69,7 @@ class UsuarioController extends BaseController
         $retorno = $this->usuarioService->adicionarusuario($dados, $imagem);
 
         // Exibe mensagem de sucesso
-        echo $this->Success("Usuario Cadastrado com sucesso", "/listar-usuario");
+        echo $this->Success("Usuario Cadastrado com sucesso", "/listar-usuarios");
     }
 
     // Função responsável por alterar os dados de um usuário
@@ -82,7 +82,7 @@ class UsuarioController extends BaseController
         $retorno = $this->usuarioService->alterarusuario($dados, $imagem);
 
         // Exibe mensagem de sucesso
-        echo $this->Success(" alterado com sucesso!", "/listar-usuario");
+        echo $this->Success(" alterado com sucesso!", "/listar-usuarios");
     }
 
     // Confirmação de exclusão de usuário
@@ -107,12 +107,19 @@ class UsuarioController extends BaseController
     }
     public function alterarStatus($id, $status)
     {
-
-        if ($id):
-            $usuario = new  Usuario($id, "","","","","",$status);
+        if ($id && in_array($status, ['0', '1'])) {
+            $usuario = new Usuario($id, "", "", "", "", "","", $status);
             $this->usuarioDao->alterar($usuario);
-        #$this->success("Imovel", "Atualizado", "listar");
-        endif;
+            echo json_encode(['success' => true]);
+        } else {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'Dados inválidos']);
+        }
+    }    
+  
+    public function logout()
+    {
+      session_destroy();
+      header("location:/");
     }
-   
 }

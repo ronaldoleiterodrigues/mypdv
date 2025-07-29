@@ -2,9 +2,8 @@
 if (!isset($_SESSION)):
     session_start();
 endif;
-
+require_once __DIR__ . "/../../Configurations/Formater.php";
 use App\Configurations\Formater;
-
 $formater = new Formater();
 ?>
 <!DOCTYPE html>
@@ -13,7 +12,7 @@ $formater = new Formater();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casa Web - imobiliaria online</title>
+    <title>My pdv - sistema de gestão de vendas</title>
     <!-- carregando arquivos java scripts -->
     <script type="text/javascript" src="/lib/js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="/lib/js/animacoes.js"></script>
@@ -30,10 +29,11 @@ $formater = new Formater();
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- CARREGANDO CSS -->
-    <link rel="stylesheet" href="//cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">    
+    <link rel="stylesheet" href="/lib/css/menu.css">
     <link rel="stylesheet" href="/lib/css/aurora.css">
     <link rel="stylesheet" href="/lib/css/site.css">
-    <link rel="stylesheet" href="/lib/css/menu.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 </head>
 
